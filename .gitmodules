@@ -1,0 +1,6 @@
+[submodule "app/base"]
+	path = app/base
+	url = https://github.com/ardeshirvalipoor/base.git
+[submodule "api/express-typescript-base"]
+	path = api/express-typescript-base
+	url = https://github.com/ardeshirvalipoor/express-typescript-base.git
