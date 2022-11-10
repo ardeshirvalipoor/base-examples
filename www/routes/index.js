@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const express = require("express");
+const auth_1 = require("./auth");
+const todo_1 = require("./todo");
+const router = (0, express_1.Router)({ strict: true });
+router.get('/favicon.ico', (req, res) => res.end());
+router.use('/auth', auth_1.default);
+router.use('/todos', todo_1.default);
+router.use('/', express.static('public'));
+exports.default = router;

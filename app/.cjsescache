@@ -1,0 +1,18 @@
+[
+  "app.ts",
+  "base/lib/idb.ts",
+  "base/lib/ldb.ts",
+  "base/lib/router.ts",
+  "base/utils/appender.ts",
+  "base/utils/styler.ts",
+  "configs/colors.ts",
+  "configs/fonts.ts",
+  "configs/images.ts",
+  "configs/index.ts",
+  "configs/regexes.ts",
+  "configs/sizes.ts",
+  "configs/xhr.ts",
+  "helpers/index.ts",
+  "helpers/styles.ts",
+  "services/db.ts"
+]

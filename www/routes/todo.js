@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const configs_1 = require("../configs");
+const controllers_1 = require("../controllers");
+const express_typescript_base_1 = require("../express-typescript-base");
+let router = (0, express_1.Router)();
+router.get('/', controllers_1.default.todo.get);
+// router.get('/:id', controllers.todo.getTodo);
+router.get('/protected-todo', express_typescript_base_1.base.middlewares.authorize.byRole([]), controllers_1.default.todo.getProtected);
+router.get('/sensitive-todo', express_typescript_base_1.base.middlewares.authenticate.token(configs_1.default.jwt.SECRET), controllers_1.default.todo.getSensitive);
+router.post('/', controllers_1.default.todo.create);
+router.put('/:id', controllers_1.default.todo.update);
+router.delete('/:id', controllers_1.default.todo.remove);
+exports.default = router;

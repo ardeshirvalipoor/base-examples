@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Save Money</title>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="black">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="date=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <link rel="shortcut icon" href="android/512.png?v=2">
+    <link rel="apple-touch-icon" href="ios/180.png?v=1">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        @font-face {
+            font-family: 'Open sans';
+            font-style: normal;
+            font-weight: 300;
+            src: url('/fonts/open-sans-300.woff') format('woff');
+            /* unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; */
+        }
+
+        @font-face {
+            font-family: 'Open sans';
+            font-style: normal;
+            font-weight: 400;
+            src: url('/fonts/open-sans-400.woff') format('woff');
+            /* unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; */
+        }
+
+        @font-face {
+            font-family: 'Open sans';
+            font-style: normal;
+            font-weight: 700;
+            src: url('/fonts/open-sans-700.woff') format('woff');
+            /* unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; */
+        }
+
+        *:not(input) {
+            -webkit-touch-callout: none;
+            -webkit-text-size-adjust: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        *:focus {
+            outline: none;
+        }
+
+        * {
+            -webkit-overflow-scrolling: touch;
+            box-sizing: border-box;
+            font-family: 'Open sans', 'Samim', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input,
+        input:before,
+        input:after {
+            border-radius: 0;
+            -webkit-appearance: none;
+            -webkit-user-select: initial;
+            user-select: initial;
+        }
+
+        input,
+        textarea,
+        button,
+        select,
+        a {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            word-spacing: -2px;
+            overflow: hidden;
+            -webkit-touch-callout: none;
+            position: fixed;
+
+        }
+
+        /* ::-webkit-scrollbar {
+            width: 10px
+        } */
+
+        /* ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, .10)
+        }
+
+        ::-webkit-scrollbar-track:hover {
+            background: rgba(0, 0, 0, .15)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, .15)
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, .20)
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            background: rgba(0, 0, 0, .30)
+        } */
+    </style>
+
+</head>
+
+<body>
+    <!-- <body oncontextmenu="return false"> -->
+    <script>
+        let newWorker
+
+        // The click event on the notification
+
+
+        if ('serviceWorker' in navigator) {
+            // Register the service worker
+            navigator.serviceWorker.register('sw.js', { scope: '/' }).then(reg => {
+                reg.addEventListener('updatefound', () => {
+                    console.log('updatefound')
+                    // An updated service worker has appeared in reg.installing!
+                    newWorker = reg.installing
+
+                    newWorker.addEventListener('statechange', () => {
+                        console.log('state changes')
+                        // Has service worker state changed?
+                        switch (newWorker.state) {
+                            case 'installed':
+                                // There is a new service worker available, show the notification
+                                if (navigator.serviceWorker.controller) {
+                                    // let notification = document.getElementById('notification');
+                                    // notification.style.display = 'flex';
+                                }
+                                break
+                        }
+                    })
+                })
+            })
+            let refreshing
+            // The event listener that is fired when the service worker updates
+            // Here we reload the page
+            navigator.serviceWorker.addEventListener('controllerchange', function () {
+                if (refreshing) return
+                // document.getElementById('reload').addEventListener('click', function () {
+                newWorker.postMessage({ action: 'skipWaiting' })
+                window.location.reload()
+                refreshing = true
+                // });
+            })
+
+        }
+    </script>
+    <!-- <script src="inobounce.min.js"></script> -->
+    <script src="bundle.js?v=45"></script>
+
+</body>
+
+</html>
