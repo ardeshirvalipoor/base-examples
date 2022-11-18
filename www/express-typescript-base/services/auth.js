@@ -15,10 +15,10 @@ function getGoogleUrl(clientId, clientSecret, redirectUrl, scope) {
     const url = oauth2Client.generateAuthUrl({ access_type: 'offline', scope });
     return url;
 }
-function getGoogleCallback(clientSecret, redirectUrl, code) {
+function getGoogleCallback(clientId, clientSecret, redirectUrl, code) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const oauth2Client = new googleapis_1.google.auth.OAuth2(clientSecret, redirectUrl, code);
+            const oauth2Client = new googleapis_1.google.auth.OAuth2(clientId, clientSecret, redirectUrl);
             const { tokens } = yield oauth2Client.getToken(code);
             oauth2Client.setCredentials(tokens);
             var oauth2 = googleapis_1.google.oauth2({ auth: oauth2Client, version: 'v2' });

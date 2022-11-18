@@ -27,6 +27,7 @@ async function getAuthRedirectUrl(req, res) {
 async function getGoogleCallBackUrl(req, res) {
     try {
         const profile = <IGoogleProfile>await base.services.auth.getGoogleCallback(
+            configs.google.GOOGLE_CLIENT_ID,
             configs.google.GOOGLE_CLIENT_SECRET,
             req.protocol + '://' + req.headers.host + configs.google.GOOGLE_REDIRECT_URL,
             req.query['code']

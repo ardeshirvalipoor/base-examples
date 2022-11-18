@@ -1,22 +1,11 @@
-import { Router, Request, Response, NextFunction } from 'express';
+import { Router, Request, Response, NextFunction, ErrorRequestHandler } from 'express'
+import { readFile, writeFile } from 'fs'
 
-
-
-function get (req: Request, res: Response, next: NextFunction)  {
-
-/*     Todo.find(function (err, todos) {
-
-        if (err) {
-            res.send(err);
-        }
-
-        res.json(todos);
-
-    }); */
-
+function get(req: Request, res: Response, next: NextFunction) {
+    res.json([])
 }
 
-function create  (req: Request, res: Response, next: NextFunction) {
+function create(req: Request, res: Response, next: NextFunction) {
 
     /* Todo.create({
         title: req.body.title
@@ -39,25 +28,25 @@ function create  (req: Request, res: Response, next: NextFunction) {
     }); */
 
 }
-function update () {
+function update() {
 
 }
-function remove (req, res, next) {
+function remove(req, res, next) {
 
-/*     Todo.remove({
-        _id: req.params.todo_id
-    }, (err, todo) => {
-        res.json(todo);
-    }); */
+    /*     Todo.remove({
+            _id: req.params.todo_id
+        }, (err, todo) => {
+            res.json(todo);
+        }); */
 
 }
 // secure route
-function getProtected (req: Request, res: Response, next: NextFunction) {
-    res.json({msg: 'You are authorized to see this'})
+function getProtected(req: Request, res: Response, next: NextFunction) {
+    res.json({ msg: 'You are authorized to see this' })
 }
 // secure base on role
-function getSensitive (req: Request, res: Response, next: NextFunction) {
-    res.json({msg: 'You are authorized to see this'})
+function getSensitive(req: Request, res: Response, next: NextFunction) {
+    res.json({ msg: 'You are authorized to see this' })
 }
 
 export default {

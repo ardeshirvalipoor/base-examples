@@ -140,7 +140,7 @@ exports.default = (dbUri, dbName) => {
                     try {
                         const db = yield getDB();
                         let collection = db.collection(collectionName);
-                        const docs = yield collection.findOneAndUpdate(query, item, options);
+                        const docs = yield collection.findOneAndUpdate(query, /* { $set: { ...item } */ item, options);
                         return resolve(docs); //Todo: change to _id
                     }
                     catch (error) {

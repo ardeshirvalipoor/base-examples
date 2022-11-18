@@ -6,3 +6,10 @@
 //         next()
 //     }
 // }) // Todo: fix this later
+
+import errors from './errors'
+
+
+export default {
+    errors: errors
+}

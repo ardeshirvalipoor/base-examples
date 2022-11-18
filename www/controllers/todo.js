@@ -1,15 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function get(req, res, next) {
-    /*     Todo.find(function (err, todos) {
-    
-            if (err) {
-                res.send(err);
-            }
-    
-            res.json(todos);
-    
-        }); */
+    res.json([]);
 }
 function create(req, res, next) {
     /* Todo.create({

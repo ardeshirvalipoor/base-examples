@@ -1,3 +1,4 @@
+"use strict";
 // app.use((req, res, next) => {
 //     if (req.path.substr(-1) == '/' && req.path.length > 1) {
 //         let query = req.url.slice(req.path.length)
@@ -6,3 +7,8 @@
 //         next()
 //     }
 // }) // Todo: fix this later
+Object.defineProperty(exports, "__esModule", { value: true });
+const errors_1 = require("./errors");
+exports.default = {
+    errors: errors_1.default
+};

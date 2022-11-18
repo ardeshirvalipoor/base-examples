@@ -38,7 +38,7 @@ function getAuthRedirectUrl(req, res) {
 function getGoogleCallBackUrl(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const profile = yield express_typescript_base_1.base.services.auth.getGoogleCallback(configs_1.default.google.GOOGLE_CLIENT_SECRET, req.protocol + '://' + req.headers.host + configs_1.default.google.GOOGLE_REDIRECT_URL, req.query['code']);
+            const profile = yield express_typescript_base_1.base.services.auth.getGoogleCallback(configs_1.default.google.GOOGLE_CLIENT_ID, configs_1.default.google.GOOGLE_CLIENT_SECRET, req.protocol + '://' + req.headers.host + configs_1.default.google.GOOGLE_REDIRECT_URL, req.query['code']);
             var token = jwjsonwebtokent.sign({ email: profile.email.toLowerCase() }, configs_1.default.jwt.SECRET, { expiresIn: '30d', algorithm: 'RS256' });
             const today = new Date();
             const exp = new Date(today);

@@ -4,7 +4,6 @@ import controllers from '../controllers'
 import { base } from '../express-typescript-base'
 
 let router = Router()
-
 router.get('/', controllers.todo.get);
 // router.get('/:id', controllers.todo.getTodo);
 router.get('/protected-todo', base.middlewares.authorize.byRole([]),  controllers.todo.getProtected);
