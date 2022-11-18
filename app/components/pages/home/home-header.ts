@@ -35,7 +35,7 @@ export const HomeHeader = () => {
     })
     base.cssClass({
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-staart',
         alignItems: 'center',
         height: 'calc(66px + env(safe-area-inset-top))',
         padding: 'calc(0px + env(safe-area-inset-top)) 0 0',

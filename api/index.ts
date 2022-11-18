@@ -6,6 +6,7 @@ import * as cors from 'cors'
 import routes from './routes/index'
 import { Router, Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 import middlewares from './middlewares'
+import * as jwt from 'jsonwebtoken'
 
 const PORT = process.env.PORT || 7001
 const app = express()
@@ -16,6 +17,6 @@ app.use(bodyParser.json({ limit: 1024102420, type: 'application/json' }))
 app.use(routes)
 app.use(middlewares.errors.logErrors)
 app.use(middlewares.errors.errorHandler)
-app.listen(PORT, () => console.log('Todo api listening on port', PORT))
 
 // check the output: jwt.verify(token, secret)
+app.listen(PORT, () => console.log('Todo api listening on port', PORT))

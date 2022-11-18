@@ -8,7 +8,9 @@ This project is a template for a simple todo app.
 
 1. Clone this repository:
 
-    `git clone --recursive --recurse-submodules`
+    `git clone https://github.com/ardeshirvalipoor/base-todo --recurse-submodules`
+    and
+    `cd base-todo`
 
 2. Install npm packages:
 
