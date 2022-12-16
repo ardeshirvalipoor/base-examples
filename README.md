@@ -11,6 +11,9 @@ This project is a template for a simple todo app.
     `git clone https://github.com/ardeshirvalipoor/base-todo --recurse-submodules`
     and
     `cd base-todo`
+    Note: to add the base project as a submodule to any project, use the following command:
+    `git submodule add https://github.com/ardeshirvalipoor/base`
+
 
 2. Install npm packages:
 
@@ -21,7 +24,6 @@ This project is a template for a simple todo app.
     
     cd app && npm install
     ```
-
 
 
 3. Compile the project
