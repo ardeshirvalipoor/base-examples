@@ -6,4 +6,4 @@ import db from './services/db'
 db.init().then(() => {
     document.body.appendChild(app.el)
 })
-document.addEventListener('rouchstart', () => false, PASSIVE)
+document.addEventListener('touchstart', () => false, PASSIVE)
